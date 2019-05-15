@@ -1,2 +1,3 @@
 # GPAcalculator
-Simple Gpa Calcululator with GUI
+*.iml
+.idea/*
