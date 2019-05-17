@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -63,6 +64,9 @@ public class Controller implements Initializable
 	private Button calcButton;
 	@FXML
 	private Button addButton;
+	@FXML
+	private Button resetButton;
+
 
 
 	private final int MAX_ROWS_OF_COURSE = 12;
@@ -91,7 +95,7 @@ public class Controller implements Initializable
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("ERROR: NO SPACE LEFT ON STAGE.");
-			alert.setContentText(String.format("It is possible to add only %s courses.", MAX_ROWS_OF_COURSE));
+			alert.setContentText(String.format("Sorry, It is possible to add only %s courses.", MAX_ROWS_OF_COURSE));
 			alert.showAndWait();
 			return;
 		}
@@ -138,6 +142,37 @@ public class Controller implements Initializable
 
 	@FXML
 	private void removeRow(ActionEvent event) {
+		int row = inputGrid.getRowIndex((Node) event.getSource());
+		ArrayList<Node> deleteNodes = new ArrayList<>(5);
+
+		for (Node child : inputGrid.getChildren()) {
+			// get index from child
+			Integer rowIndex = GridPane.getRowIndex(child);
+
+			// handle null values for index=0
+			int r = rowIndex == null ? 0 : rowIndex;
+
+			if (r > row) {
+				// decrement rows for rows after the deleted row
+				GridPane.setRowIndex(child, r-1);
+			} else if (r == row) {
+				// collect matching rows for deletion
+				deleteNodes.add(child);
+				child.setManaged(false);
+			}
+		}
+
+		inputGrid.getChildren().removeAll(deleteNodes);
+		model.setNumOfRows(model.getNumOfRows()-1);
+
+		listOfGrades.remove(row);
+		model.setGradeList(listOfGrades);
+		listOfCredits.remove(row);
+		for(int i = 0; i < listOfCredits.size(); i++)
+		{
+			System.out.println(listOfCredits.get(i).getText());
+		}
+		model.setCredits(listOfCredits);
 
     }
 
