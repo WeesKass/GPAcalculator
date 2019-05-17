@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Model {
 
-    private ArrayList<Integer> listOfCredits = new ArrayList<Integer>();
-    private ArrayList<String> listOfGrades = new ArrayList<String>();
+    private ArrayList<Integer> listOfCredits = new ArrayList<>();
+    private ArrayList<String> listOfGrades = new ArrayList<>();
 
 
     private double totalCreditPoints = 0.0;
@@ -27,6 +27,13 @@ public class Model {
         int classHours = 0;
         String grade = "";
 
+
+    }
+
+    public void setGradeList(ArrayList<ComboBox<String>> listOfGrades) {
+
+    }
+    public void setCredits(ArrayList<TextField> listOfCredits) {
 
     }
 
