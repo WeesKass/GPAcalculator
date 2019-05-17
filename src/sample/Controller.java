@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -12,8 +14,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.util.ArrayList;
 
@@ -58,20 +62,19 @@ public class Controller implements Initializable
 	private Button calcButton;
 	@FXML
 	private Button addButton;
-	@FXML
-	private Button saveButton;
-	@FXML
-	private Button newButton;
+
+
+	private final int MAX_ROWS_OF_COURSE = 12;
 
 	
 	private final Model model = new Model();
-	private Text creditsName;
+	private TextField courseName;
 	private TextField creditsInput;
 	private Text gradeName;
 	private ComboBox<String> gradeInput;
 	private Button removeButton;
-	private ArrayList<TextField> listOfCredits = new ArrayList<TextField>();
-	private ArrayList<ComboBox<String>> listOfGrades = new ArrayList<ComboBox<String>>();
+	private ArrayList<TextField> listOfCredits = new ArrayList<>();
+	private ArrayList<ComboBox<String>> listOfGrades = new ArrayList<>();
 
 	
 
@@ -80,24 +83,51 @@ public class Controller implements Initializable
 		
 	}
 
-
 	@FXML
 	private void addRow(ActionEvent e) {
 
+		if (model.getNumOfRows() > MAX_ROWS_OF_COURSE){
+			return;
+		}
+
+		courseName = new TextField();
+		courseName.setPromptText("Ex: English");
+		courseName.fontProperty().setValue(new Font(13));
+		courseName.setId("text" + model.getNumOfRows());
+
+		creditsInput = new TextField();
+		creditsInput.setPromptText("Ex: 3");
+		listOfCredits.add(creditsInput);
+		creditsInput.setId("creditsInput" + model.getNumOfRows());
+
+		gradeName = new Text("");
+		gradeName.fontProperty().setValue(new Font(15));
+		gradeName.setId("text" + model.getNumOfRows() + "" + model.getNumOfRows());
+
+		gradeInput = new ComboBox<String>();
+		gradeInput.getItems().addAll("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F");
+		listOfGrades.add(gradeInput);
+		gradeInput.setId("gradeInput" + model.getNumOfRows());
+
+		removeButton = new Button("-");
+		removeButton.fontProperty().setValue(new Font(15));
+		removeButton.setId("removeButton" + model.getNumOfRows());
+
+		removeButton.setOnAction(event -> {
+			removeRow(event);
+		});
+
+		inputGrid.add(courseName, 0, model.getNumOfRows());
+		inputGrid.add(creditsInput, 1, model.getNumOfRows());
+		inputGrid.add(gradeName, 2, model.getNumOfRows());
+		inputGrid.add(gradeInput, 3, model.getNumOfRows());
+		inputGrid.add(removeButton, 4, model.getNumOfRows());
+
+		model.setNumOfRows(model.getNumOfRows()+1);
+
 	}
 
 
-	@FXML
-	private void saveSemester(ActionEvent e) {
-
-	}
-	
-
-
-	@FXML
-	private void newSemester(ActionEvent e) {
-
-	}
 
 
 	@FXML
@@ -108,11 +138,11 @@ public class Controller implements Initializable
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
+		gradeInput0.getItems().addAll("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F");
+		gradeInput1.getItems().addAll("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F");
 
 	}
 
 
-
-	
 }
