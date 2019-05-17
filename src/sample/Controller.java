@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -87,6 +88,11 @@ public class Controller implements Initializable
 	private void addRow(ActionEvent e) {
 
 		if (model.getNumOfRows() > MAX_ROWS_OF_COURSE){
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("ERROR: NO SPACE LEFT ON STAGE.");
+			alert.setContentText(String.format("It is possible to add only %s courses.", MAX_ROWS_OF_COURSE));
+			alert.showAndWait();
 			return;
 		}
 
