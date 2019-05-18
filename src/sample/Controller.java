@@ -2,23 +2,15 @@ package sample;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
-
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.util.ArrayList;
@@ -81,10 +73,18 @@ public class Controller implements Initializable
 	private ArrayList<TextField> listOfCredits = new ArrayList<>();
 	private ArrayList<ComboBox<String>> listOfGrades = new ArrayList<>();
 
-	
+
 
 	@FXML
 	private void calculateGPA(ActionEvent e) {
+
+
+		model.setCredits(listOfCredits);
+		model.setGradeList(listOfGrades);
+		model.calculateGPA();
+
+		gpaOutput.setText(model.getCurrGpa() + "");
+
 		
 	}
 
@@ -146,17 +146,13 @@ public class Controller implements Initializable
 		ArrayList<Node> deleteNodes = new ArrayList<>(5);
 
 		for (Node child : inputGrid.getChildren()) {
-			// get index from child
 			Integer rowIndex = GridPane.getRowIndex(child);
 
-			// handle null values for index=0
 			int r = rowIndex == null ? 0 : rowIndex;
 
 			if (r > row) {
-				// decrement rows for rows after the deleted row
 				GridPane.setRowIndex(child, r-1);
 			} else if (r == row) {
-				// collect matching rows for deletion
 				deleteNodes.add(child);
 				child.setManaged(false);
 			}
@@ -180,9 +176,17 @@ public class Controller implements Initializable
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
+		listOfCredits.add(creditsInput0);
 		gradeInput0.getItems().addAll("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F");
-		gradeInput1.getItems().addAll("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F");
+		listOfGrades.add(gradeInput0);
 
+		listOfCredits.add(creditsInput1);
+		gradeInput1.getItems().addAll("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F");
+		listOfGrades.add(gradeInput1);
+
+		listOfCredits.add(creditsInput2);
+		gradeInput2.getItems().addAll("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F");
+		listOfGrades.add(gradeInput2);
 	}
 
 
