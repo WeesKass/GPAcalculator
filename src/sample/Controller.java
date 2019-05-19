@@ -99,7 +99,6 @@ public class Controller implements Initializable
 			colorIdentifier.setFill(Color.rgb(178, 34, 34));
 		}
 
-		
 	}
 
 	@FXML
