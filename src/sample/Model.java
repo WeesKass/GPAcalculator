@@ -6,24 +6,24 @@ import java.util.ArrayList;
 
 public class Model {
 
-    private ArrayList<Integer> listOfCredits = new ArrayList<>();
-    private ArrayList<String> listOfGrades = new ArrayList<>();
-
     int numberOfRows = 3;
     private double currGpa = 0.0;
 
+    private ArrayList<Integer> listOfCredits = new ArrayList<>();
+    private ArrayList<String> listOfGrades = new ArrayList<>();
+    private ArrayList<String> listOfCourseNames = new ArrayList<>();
 
 
-    public void calculateGPA()
-    {
+    public void calculateGPA() {
+
+        String grade;
+        int courseHours ;
         double numberSemesterHours = 0.0;
         double totalCoursePoints = 0.0;
         double gradeScaled=0.0;
-        int courseHours ;
-        String grade;
 
-        for(int i = 0; i < numberOfRows; i++)
-        {
+        for(int i = 0; i < numberOfRows; i++) {
+
             courseHours = listOfCredits.get(i);
             numberSemesterHours += courseHours;
             grade = listOfGrades.get(i);
@@ -67,17 +67,18 @@ public class Model {
 
                 case("F"):{
                     gradeScaled = 0.0;break; }
-
             }
+
             totalCoursePoints += (courseHours*gradeScaled);
         }
-
 
         setCurrGPA(Math.round(totalCoursePoints/numberSemesterHours * 100.0) / 100.0);
     }
 
+
     public void setGradeList(ArrayList<ComboBox<String>> listOfGrades) {
         this.listOfGrades.clear();
+
         for(int i = 0; i < listOfGrades.size(); i++) {
             this.listOfGrades.add(listOfGrades.get(i).getValue());
         }
@@ -85,28 +86,47 @@ public class Model {
 
 
     public void setCredits(ArrayList<TextField> listOfCredits) {
-
         for (int i = 0; i < listOfCredits.size(); i++) {
-            if(!(listOfCredits.get(i).getText().equals("")) && !(listOfCredits.get(i).getText() == null))
-            {
+            if(!(listOfCredits.get(i).getText().equals("")) && !(listOfCredits.get(i).getText() == null)) {
                 this.listOfCredits.add(Integer.parseInt(listOfCredits.get(i).getText()));
             }
         }
     }
+
+
+    public void setCourseNameList(ArrayList<ComboBox<String>> listOfGrades) {
+        this.listOfCourseNames.clear();
+
+        for(int i = 0; i < listOfGrades.size(); i++) {
+            this.listOfCourseNames.add(listOfGrades.get(i).getValue());
+        }
+    }
+
 
     public void setCurrGPA(double currGpa) {
         this.currGpa = currGpa;
         return;
     }
 
+
     public double getCurrGpa() {
         return currGpa;
     }
 
+
     public int getNumOfRows(){
         return numberOfRows;
     }
+
+
     public void setNumOfRows(int numberOfRows){
         this.numberOfRows = numberOfRows;
+    }
+
+
+    public void resetData() {
+        listOfCredits.clear();
+        listOfGrades.clear();
+        return;
     }
 }

@@ -27,21 +27,14 @@
    <children>
       <MenuBar>
         <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
+            <Menu mnemonicParsing="false" text="Menu">
+              <items>
+                <MenuItem fx:id="reset" mnemonicParsing="false" onAction="#resetAction" text="Reset" />
+                  <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#editAction" text="Edit" />
+                  <MenuItem fx:id="about" mnemonicParsing="false" onAction="#aboutAction" text="About" />
+                  <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exit" text="Exit" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
       <Text fill="#fff9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="GPA calculator" textAlignment="CENTER" wrappingWidth="391.4399871826172">
@@ -93,17 +86,6 @@
                                                 <Insets />
                                              </GridPane.margin>
                                           </TextField>
-                                          <Button fx:id="removeButton0" mnemonicParsing="false" onAction="#removeRow" text="-" GridPane.columnIndex="4">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
-                                             <tooltip>
-                                                <Tooltip text="Remove this class." />
-                                             </tooltip>
-                                          </Button>
                                           <TextField fx:id="creditsInput1" promptText="Ex: 4" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets />
@@ -122,29 +104,29 @@
                                           </Button>
                                           <ComboBox fx:id="gradeInput0" GridPane.columnIndex="3" />
                                           <ComboBox fx:id="gradeInput1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                          <TextField prefHeight="26.0" prefWidth="180.0" promptText="Ex: Programming">
+                                          <TextField fx:id="nameInput0" prefHeight="26.0" prefWidth="180.0" promptText="Ex: Programming">
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField promptText="Ex: Calculus" GridPane.rowIndex="1">
+                                          <TextField fx:id="nameInput1" promptText="Ex: Calculus" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField promptText="Ex: Calculus" GridPane.rowIndex="2">
+                                          <TextField fx:id="nameInput2" promptText="Ex: Physics" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="creditsInput2" promptText="Ex: 4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <TextField fx:id="creditsInput2" promptText="Ex: 2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <ComboBox fx:id="gradeInput2" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                           <Button fx:id="removeButton22" mnemonicParsing="false" onAction="#removeRow" text="-" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                              <tooltip>
-                                                <Tooltip text="Remove this class." />
+                                                <Tooltip text="Remove this class" />
                                              </tooltip>
                                           </Button>
                                        </children>
@@ -173,7 +155,7 @@
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="62.0" prefWidth="389.0">
                                              <children>
-                                                <Circle fx:id="colorIdentifier" fill="WHITE" radius="16.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #696969;" />
+                                                <Circle fx:id="colorIdentifier" fill="WHITE" radius="16.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #696969;" visible="false" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Your Overall GPA is:">
                                                    <font>
                                                       <Font name="Ubuntu Condensed" size="25.0" />
@@ -202,7 +184,7 @@
                                                       <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                                                    </HBox.margin>
                                                    <tooltip>
-                                                      <Tooltip text="Calculate GPA." />
+                                                      <Tooltip text="Calculate GPA" />
                                                    </tooltip>
                                                    <font>
                                                       <Font name="Ubuntu Condensed" size="17.0" />
@@ -217,7 +199,7 @@
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </padding>
                                                    <tooltip>
-                                                      <Tooltip text="Add new class." />
+                                                      <Tooltip text="Add new course" />
                                                    </tooltip>
                                                    <font>
                                                       <Font name="Ubuntu Condensed" size="17.0" />
