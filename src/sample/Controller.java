@@ -6,15 +6,24 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
+
+
 
 
 public class Controller implements Initializable {
@@ -113,7 +122,7 @@ public class Controller implements Initializable {
 		}else {
 			colorIdentifier.setFill(Color.rgb(178, 34, 34));
 		}
-
+		reset.setDisable(false);
 	}
 
 	@FXML
@@ -162,6 +171,7 @@ public class Controller implements Initializable {
 		inputGrid.add(removeButton, 4, model.getNumOfRows());
 
 		model.setNumOfRows(model.getNumOfRows()+1);
+		reset.setDisable(false);
 
 	}
 
@@ -214,10 +224,24 @@ public class Controller implements Initializable {
 
 		}model.resetData();
 		gpaOutput.setText("");
+		reset.setDisable(true);
+		colorIdentifier.setVisible(false);
 	}
 
 	@FXML
 	void aboutAction(ActionEvent event) {
+		try {
+
+			Parent root = FXMLLoader.load(getClass().getResource("/sample/About.fxml"));
+			Stage aboutWindow = new Stage();
+			aboutWindow.initModality(Modality.APPLICATION_MODAL);
+			Scene scene = new Scene(root, 343, 486);
+			aboutWindow.setScene(scene);
+			aboutWindow.setTitle("About My Project");
+			aboutWindow.showAndWait();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 
 	}
 	@FXML
@@ -242,6 +266,8 @@ public class Controller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		reset.setDisable(true);
+
 
 		listOfCredits.add(creditsInput0);
 		gradeInput0.getItems().addAll("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F");

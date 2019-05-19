@@ -11,7 +11,8 @@ public class Main extends Application {
 
 	final static int HEIGHT = 547;
 	final static int WiDTH = 391;
-	
+
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -28,7 +29,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
