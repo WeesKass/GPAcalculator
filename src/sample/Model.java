@@ -9,7 +9,7 @@ public class Model {
     private ArrayList<Integer> listOfCredits = new ArrayList<>();
     private ArrayList<String> listOfGrades = new ArrayList<>();
 
-    int numberOfRows = 2;
+    int numberOfRows = 3;
     private double currGpa = 0.0;
 
 
@@ -19,7 +19,7 @@ public class Model {
         double numberSemesterHours = 0.0;
         double totalCoursePoints = 0.0;
         double gradeScaled=0.0;
-        int courseHours;
+        int courseHours ;
         String grade;
 
         for(int i = 0; i < numberOfRows; i++)

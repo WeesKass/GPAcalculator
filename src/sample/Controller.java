@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.util.ArrayList;
@@ -58,6 +60,9 @@ public class Controller implements Initializable
 	private Button addButton;
 	@FXML
 	private Button resetButton;
+	@FXML
+	private Circle colorIdentifier;
+
 
 
 
@@ -78,12 +83,21 @@ public class Controller implements Initializable
 	@FXML
 	private void calculateGPA(ActionEvent e) {
 
-
 		model.setCredits(listOfCredits);
 		model.setGradeList(listOfGrades);
 		model.calculateGPA();
 
 		gpaOutput.setText(model.getCurrGpa() + "");
+
+		if (model.getCurrGpa() > 3.5){
+			colorIdentifier.setFill(Color.rgb(0, 128, 0));
+		}else if(model.getCurrGpa() > 2.5){
+			colorIdentifier.setFill(Color.rgb(70, 130, 180));
+		}else  if(model.getCurrGpa() > 1.5){
+			colorIdentifier.setFill(Color.rgb(255, 215, 0));
+		}else {
+			colorIdentifier.setFill(Color.rgb(178, 34, 34));
+		}
 
 		
 	}
@@ -123,9 +137,7 @@ public class Controller implements Initializable
 		removeButton.fontProperty().setValue(new Font(15));
 		removeButton.setId("removeButton" + model.getNumOfRows());
 
-		removeButton.setOnAction(event -> {
-			removeRow(event);
-		});
+		removeButton.setOnAction(event -> { removeRow(event); });
 
 		inputGrid.add(courseName, 0, model.getNumOfRows());
 		inputGrid.add(creditsInput, 1, model.getNumOfRows());
