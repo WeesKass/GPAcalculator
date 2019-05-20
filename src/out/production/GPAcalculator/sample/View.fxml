@@ -36,10 +36,6 @@
                         <KeyCodeCombination alt="UP" code="R" control="ANY" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#editAction" text="Edit">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="E" control="ANY" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="about" mnemonicParsing="false" onAction="#aboutAction" text="About">
                      <accelerator>
@@ -82,7 +78,7 @@
                                                 <Insets left="15.0" />
                                              </HBox.margin>
                                           </Text>
-                                          <Region prefHeight="20.0" prefWidth="74.0" />
+                                          <Region prefHeight="20.0" prefWidth="86.0" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Credits">
                                              <font>
                                                 <Font name="Ubuntu Condensed" size="17.0" />
@@ -91,7 +87,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                           </Text>
-                                          <Region prefHeight="20.0" prefWidth="77.0" />
+                                          <Region prefHeight="20.0" prefWidth="66.0" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Grades">
                                              <font>
                                                 <Font name="Ubuntu Condensed" size="17.0" />
@@ -119,7 +115,7 @@
                                                 <Insets />
                                              </GridPane.margin>
                                              <tooltip>
-                                                <Tooltip text="Remove this class." />
+                                                <Tooltip text="Remove this course" />
                                              </tooltip>
                                           </Button>
                                           <ComboBox fx:id="gradeInput0" GridPane.columnIndex="3" />
@@ -146,7 +142,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                              <tooltip>
-                                                <Tooltip text="Remove this class" />
+                                                <Tooltip text="Remove this course" />
                                              </tooltip>
                                           </Button>
                                        </children>

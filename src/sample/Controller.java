@@ -2,7 +2,6 @@ package sample;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,14 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 
@@ -30,8 +27,6 @@ public class Controller implements Initializable {
 
 	@FXML
 	private MenuItem reset;
-	@FXML
-	private MenuItem edit;
 	@FXML
 	private MenuItem about;
 	@FXML
@@ -78,7 +73,7 @@ public class Controller implements Initializable {
 	private Button addButton;
 
 
-	private final int MAX_ROWS_OF_COURSE = 12;
+	private int MAX_ROWS_OF_COURSE = 12;
 	final Tooltip removeTooltip = new Tooltip("Remove this course");
 
 
@@ -97,14 +92,18 @@ public class Controller implements Initializable {
 
 	@FXML
 	private void calculateGPA(ActionEvent e) {
-		if(model.getNumOfRows() == 0) {
-		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setTitle("Error");
-		alert.setHeaderText("ERROR: NO FIELD(S) FOUND.");
-		alert.setContentText("Please make sure you have at least one course row  before pressing Calculate button.");
-		alert.showAndWait();
-		return;
-	}
+		for(int i = 0; i < model.getNumOfRows(); i++)
+		{
+			if(listOfCredits.get(i).getText().equals("") || listOfGrades.get(i).getValue() == null)
+			{
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("ERROR: EMPTY FIELD(S).");
+				alert.setContentText("Please make sure you have completely filled out the form before calculating your GPA.");
+				alert.showAndWait();
+				return;
+			}
+		}
 
 		model.setCredits(listOfCredits);
 		model.setGradeList(listOfGrades);
@@ -239,15 +238,13 @@ public class Controller implements Initializable {
 			aboutWindow.setScene(scene);
 			aboutWindow.setTitle("About My Project");
 			aboutWindow.showAndWait();
+
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 
 	}
-	@FXML
-	void editAction(ActionEvent event) {
 
-	}
 
 	public void nodeDeleter(int row, ArrayList deleteNodes){
 		for (Node child : inputGrid.getChildren()) {

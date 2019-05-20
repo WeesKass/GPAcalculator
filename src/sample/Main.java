@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -19,6 +20,8 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("/sample/View.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Timur Kasenov COM-18");
+			Image applicationIcon = new Image(getClass().getResourceAsStream("/sample/assets/icon.png"));
+			primaryStage.getIcons().add(applicationIcon);
 			primaryStage.setMinHeight(HEIGHT);
 			primaryStage.setMinWidth(WiDTH);
 			primaryStage.setResizable(false);
