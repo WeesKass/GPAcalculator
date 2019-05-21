@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="341.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="341.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="486.0" prefWidth="342.0">
+      <VBox prefHeight="503.0" prefWidth="343.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GPA calculator" textAlignment="CENTER" wrappingWidth="341.7294921875">
                <font>
@@ -41,21 +41,39 @@
                   <Image url="@assets/formula.png" />
                </image>
             </ImageView>
-            <Region prefHeight="399.0" prefWidth="343.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="References:" wrappingWidth="340.7294921875">
+               <font>
+                  <Font name="Ubuntu Condensed" size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1. https://www.youtube.com/watch?v=ZQ-mII_pL0M" wrappingWidth="338.12353515625" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2. https://www.youtube.com/watch?v=FLkOX4Eez6o&amp;list=PL6gx4Cwl9DGBzfXLWLSYVy8EbTdpGbUIG" wrappingWidth="341.505859375" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3. https://www.programcreek.com/java-api-examples/?class=javafx.scene.layout.GridPane&amp;method=getChildren" wrappingWidth="339.98486328125" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4. http://www.newthinktank.com/2013/02/mvc-java-tutorial/" wrappingWidth="340.89501953125" />
+            <Region prefHeight="169.0" prefWidth="343.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts:">
                <font>
                   <Font name="Ubuntu Condensed" size="17.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="+996(550)26-11-77">
                <font>
                   <Font name="Ubuntu Condensed" size="17.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="https://github.com/WeesKass/GPAcalculator.git">
                <font>
                   <Font name="Ubuntu Condensed" size="17.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" />
+               </VBox.margin>
             </Text>
          </children>
       </VBox>

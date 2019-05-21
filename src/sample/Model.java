@@ -6,9 +6,12 @@ import java.util.ArrayList;
 
 public class Model {
 
+    //current number of rows
     int numberOfRows = 3;
-    private double currGpa = 0.0;
 
+    private double currentGpa = 0.0;
+
+    //lists containing all of the credits, grades and course names
     private ArrayList<Integer> listOfCredits = new ArrayList<>();
     private ArrayList<String> listOfGrades = new ArrayList<>();
     private ArrayList<String> listOfCourseNames = new ArrayList<>();
@@ -30,7 +33,7 @@ public class Model {
 
             switch (grade){
                 case("A+"):
-                    gradeScaled = 4.0;break;
+                    gradeScaled = 4.3;break;
 
                 case("A"):
                     gradeScaled = 4.0;break;
@@ -39,31 +42,19 @@ public class Model {
                     gradeScaled = 3.7;break;
 
                 case("B+"):
-                    gradeScaled = 3.3;break;
+                    gradeScaled = 3.5;break;
 
                 case("B"):
                     gradeScaled = 3.0;break;
 
                 case("B-"):
-                    gradeScaled = 2.7;break;
-
-                case("C+"):
-                    gradeScaled = 2.3;break;
+                    gradeScaled = 2.5;break;
 
                 case("C"):
                     gradeScaled = 2.0;break;
 
-                case("C-"):
-                    gradeScaled = 1.7;break;
-
-                case("D+"):
-                    gradeScaled = 1.3;break;
-
                 case("D"):
                     gradeScaled = 1.0;break;
-
-                case("D-"):
-                    gradeScaled = 0.7;break;
 
                 case("F"):{
                     gradeScaled = 0.0;break; }
@@ -94,23 +85,23 @@ public class Model {
     }
 
 
-    public void setCourseNameList(ArrayList<ComboBox<String>> listOfGrades) {
+    public void setCourseNameList(ArrayList<ComboBox<String>> listOfCourseNames) {
         this.listOfCourseNames.clear();
 
         for(int i = 0; i < listOfGrades.size(); i++) {
-            this.listOfCourseNames.add(listOfGrades.get(i).getValue());
+            this.listOfCourseNames.add(listOfCourseNames.get(i).getValue());
         }
     }
 
 
     public void setCurrGPA(double currGpa) {
-        this.currGpa = currGpa;
+        this.currentGpa = currGpa;
         return;
     }
 
 
-    public double getCurrGpa() {
-        return currGpa;
+    public double getCurrentGpa() {
+        return currentGpa;
     }
 
 
